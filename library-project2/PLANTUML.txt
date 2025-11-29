@@ -1,0 +1,38 @@
+@startuml
+package model {
+  record BookMetadata(String isbn, String title, List<String> authors, int pubYear)
+  class Copy {
+    -String copyId
+    -String isbn
+    -CopyStatus status
+    +isAvailable(): boolean
+  }
+  enum CopyStatus { AVAILABLE, ON_LOAN, RESERVED, LOST }
+  class Member {
+    -String memberId
+    -String name
+    -String email
+    -List<String> loans
+  }
+  class Loan {
+    -String loanId
+    -String copyId
+    -String memberId
+    -LocalDate start
+    -LocalDate due
+    -LocalDate returned
+  }
+  class Fine { -String fineId -String loanId -BigDecimal amount }
+}
+
+package service {
+  interface Catalogue
+  interface LibraryService
+  class ReportService
+}
+
+model.BookMetadata --> model.Copy
+model.Copy --> model.Loan : loanedIn
+model.Member --> model.Loan : has
+service.LibraryService ..> model.BookMetadata
+@enduml

@@ -1,0 +1,33 @@
+Screencast Script (max 10 minutes) — Library Management System
+
+0:00 - 0:30  Intro
+- State name, project title, Java version (Java 21), and what will be shown.
+
+0:30 - 1:30  Architecture & UML
+- Show PlantUML or class diagram. Highlight BookMetadata (record), Copy, Member, Loan, and services.
+
+1:30 - 4:30  Key Code Walkthrough (show lines)
+- BookMetadata record and defensive copy of authors.
+- Copy class and CopyStatus enum.
+- Repository interface with default/private/static methods.
+- LibraryServiceImpl.borrowBook(): demonstrate checked exceptions and call-by-value concepts.
+- Example lambda search using Predicate and method references.
+- LoanResult sealed interface and implementing classes.
+
+4:30 - 8:30  Demo user stories (run App)
+- US1 Add Book
+- US2 Register Member
+- US3 Borrow copy -> show copy status changed
+- US4 Return copy (simulate overdue) -> show fine
+- US5 Search catalogue with lambda
+- US7 Attempt to remove copy on loan -> show exception
+- US8 Generate inventory report
+
+8:30 - 9:15  Evaluation summary
+- Adherence to brief, limitations, and test notes.
+
+9:15 - 9:45  How to run
+- Show commands: mvn compile, mvn exec:java
+
+9:45 - 10:00  Closing
+- Location of code, report, and further notes in README.
